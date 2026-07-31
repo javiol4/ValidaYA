@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ValidaYA — Conoce si tu idea tiene demanda real antes de invertir más</title>
+<meta name="description" content="Sprint de Validación en Cochabamba: hasta 10 entrevistas con clientes reales en 10 días, y un reporte para decidir si avanzar, pivotar o detener tu idea. Programa Fundadores: 10 cupos a Bs 900.">
+<meta name="author" content="ValidaYA">
+<meta property="og:title" content="ValidaYA — Sabé si tu idea tiene demanda real antes de invertir más">
+<meta property="og:description" content="Sprint de Validación en Cochabamba. Hasta 10 entrevistas con clientes reales en 10 días. Programa Fundadores: 10 cupos a Bs 900.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema:#F7F2EC;
+    --crema-2:#EFE7DE;
+    --tinta:#2B211C;
+    --tinta-suave:#6B5B52;
+    --terracota:#C15F3C;
+    --terracota-osc:#a54c2b;
+    --verde:#1F7A5C;
+    --verde-claro:#E4F0EA;
+    --linea:#DDD1C6;
+    --blanco:#FFFDFB;
+    --display:'Fraunces',Georgia,serif;
+    --cuerpo:'Manrope',system-ui,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none!important;transition:none!important;}
+  }
+  body{
+    background:var(--crema);color:var(--tinta);
+    font-family:var(--cuerpo);font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .env{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .angosto{max-width:760px;}
+  a{color:var(--terracota-osc);}
+  :focus-visible{outline:3px solid var(--terracota);outline-offset:3px;border-radius:2px;}
+
+  h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.15;letter-spacing:-0.01em;}
+  h1{font-size:clamp(2.1rem,5.2vw,3.5rem);}
+  h2{font-size:clamp(1.6rem,3.4vw,2.3rem);}
+  h3{font-size:1.15rem;}
+  .rotulo{
+    font-family:var(--cuerpo);font-size:.75rem;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--terracota-osc);
+  }
+  .plomo{color:var(--tinta-suave);}
+
+  .barra{
+    border-bottom:1px solid var(--linea);background:var(--crema);
+    position:sticky;top:0;z-index:20;
+  }
+  .barra-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;max-width:1080px;margin:0 auto;}
+  .logo{font-family:var(--display);font-weight:600;font-size:1.3rem;letter-spacing:-0.02em;text-decoration:none;color:var(--tinta);}
+  .logo em{font-style:normal;color:var(--terracota);}
+  .btn{
+    display:inline-block;font-family:var(--cuerpo);font-weight:700;font-size:.95rem;
+    padding:13px 26px;border-radius:6px;text-decoration:none;border:2px solid var(--terracota);
+    background:var(--terracota);color:#fff;transition:background .18s,border-color .18s;
+    cursor:pointer;text-align:center;
+  }
+  .btn:hover{background:var(--terracota-osc);border-color:var(--terracota-osc);}
+  .btn-linea{background:transparent;color:var(--terracota-osc);}
+  .btn-linea:hover{background:var(--crema-2);border-color:var(--terracota-osc);color:var(--terracota-osc);}
+  .btn-chico{padding:9px 18px;font-size:.85rem;}
+  .barra .btn{flex-shrink:0;}
+
+  section{padding:72px 0;border-bottom:1px solid var(--linea);}
+  section.sin-linea{border-bottom:none;}
+  .cabecera-sec{max-width:640px;margin-bottom:40px;}
+  .cabecera-sec .rotulo{display:block;margin-bottom:10px;}
+  .cabecera-sec p{margin-top:14px;color:var(--tinta-suave);}
+
+  #hero{padding:76px 0 68px;border-bottom:1px solid var(--linea);}
+  .cintillo{
+    display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;
+    background:var(--crema-2);border:1px solid var(--linea);
+    padding:7px 15px;border-radius:100px;font-size:.82rem;font-weight:500;
+    margin-bottom:26px;
+  }
+  .punto{width:7px;height:7px;border-radius:50%;background:var(--terracota);flex-shrink:0;}
+  #hero h1{max-width:760px;}
+  #hero h1 .marcado{color:var(--terracota);}
+  .bajada{font-size:1.18rem;color:var(--tinta-suave);max-width:600px;margin-top:20px;}
+  .precio-fila{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:32px 0 8px;}
+  .precio{font-family:var(--display);font-weight:600;font-size:2.4rem;color:var(--tinta);line-height:1;}
+  .precio-tachado{font-size:1.15rem;color:var(--tinta-suave);text-decoration:line-through;}
+  .precio-nota{font-size:.9rem;color:var(--tinta-suave);}
+  .acciones{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
+  .micro{font-size:.88rem;color:var(--tinta-suave);margin-top:18px;}
+
+  .veredictos{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0;border:1px solid var(--linea);border-radius:10px;overflow:hidden;background:var(--blanco);}
+  .veredicto{padding:26px 24px;border-right:1px solid var(--linea);}
+  .veredicto:last-child{border-right:none;}
+  .veredicto .verbo{font-family:var(--display);font-weight:600;font-size:1.5rem;margin-bottom:8px;}
+  .veredicto p{font-size:.95rem;color:var(--tinta-suave);}
+  .v-avanzar .verbo{color:var(--verde);}
+  .v-pivotar .verbo{color:var(--terracota);}
+  .v-detener .verbo{color:var(--tinta);}
+  .cierre-veredicto{margin-top:22px;font-size:1.05rem;max-width:640px;}
+  .cierre-veredicto strong{font-weight:700;}
+
+  .hallazgos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;}
+  .hallazgo{border-top:2px solid var(--terracota);padding-top:18px;}
+  .hallazgo h3{margin-bottom:8px;font-size:1.05rem;}
+  .hallazgo p{font-size:.95rem;color:var(--tinta-suave);}
+  .cita{
+    font-family:var(--display);font-style:italic;font-weight:500;
+    font-size:1.05rem;color:var(--tinta);display:block;margin-top:12px;
+    padding-left:14px;border-left:3px solid var(--linea);
+  }
+  .nota-fuente{margin-top:30px;font-size:.85rem;color:var(--tinta-suave);}
+
+  .entrega{display:grid;grid-template-columns:1.15fr 1fr;gap:44px;align-items:start;}
+  .caja{background:var(--blanco);border:1px solid var(--linea);border-radius:10px;padding:28px;}
+  .lista-limpia{list-style:none;}
+  .lista-limpia li{position:relative;padding-left:26px;margin-bottom:11px;font-size:.98rem;}
+  .lista-limpia li::before{
+    content:"";position:absolute;left:0;top:.55em;width:9px;height:9px;
+    border-radius:2px;background:var(--verde);
+  }
+  .indice{list-style:none;counter-reset:sec;}
+  .indice li{counter-increment:sec;display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--linea);font-size:.96rem;}
+  .indice li:last-child{border-bottom:none;}
+  .indice li::before{
+    content:counter(sec);font-family:var(--display);font-weight:600;
+    color:var(--terracota);min-width:20px;
+  }
+
+  .pasos{list-style:none;counter-reset:paso;max-width:800px;}
+  .paso{counter-increment:paso;display:flex;gap:24px;padding-bottom:34px;position:relative;}
+  .paso:not(:last-child)::after{
+    content:"";position:absolute;left:19px;top:46px;bottom:6px;width:1px;background:var(--linea);
+  }
+  .paso-num{
+    flex-shrink:0;width:40px;height:40px;border-radius:50%;
+    background:var(--crema-2);border:1px solid var(--linea);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--display);font-weight:600;font-size:1.05rem;color:var(--terracota-osc);
+    position:relative;z-index:1;
+  }
+  .paso-cuerpo h3{margin-bottom:6px;}
+  .paso-cuerpo p{font-size:.97rem;color:var(--tinta-suave);}
+  .paso-cuerpo .quien{
+    display:inline-block;margin-top:9px;font-size:.78rem;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:4px;
+  }
+  .q-vos{background:var(--crema-2);color:var(--tinta-suave);}
+  .q-nos{background:var(--verde-claro);color:#0F5340;}
+
+  .garantias{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;}
+  .garantia{background:var(--blanco);border:1px solid var(--linea);border-left:4px solid var(--verde);border-radius:0 10px 10px 0;padding:24px;}
+  .garantia h3{font-size:1.05rem;margin-bottom:8px;}
+  .garantia p{font-size:.95rem;color:var(--tinta-suave);}
+
+  .visibilidad{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:26px;}
+  .vis{border:1px solid var(--linea);border-radius:10px;padding:20px;background:var(--blanco);}
+  .vis h3{font-size:1rem;margin-bottom:6px;color:var(--terracota-osc);}
+  .vis p{font-size:.9rem;color:var(--tinta-suave);}
+
+  .compara{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+  .col{border:1px solid var(--linea);border-radius:10px;padding:24px;background:var(--blanco);}
+  .col.destacada{border:2px solid var(--terracota);}
+  .col h3{font-size:1.05rem;margin-bottom:4px;}
+  .col .costo{font-size:.85rem;color:var(--tinta-suave);margin-bottom:14px;display:block;}
+  .col ul{list-style:none;}
+  .col li{font-size:.92rem;padding:7px 0;border-bottom:1px solid var(--crema-2);color:var(--tinta-suave);}
+  .col li:last-child{border-bottom:none;}
+  .marca-si{color:var(--verde);font-weight:700;}
+  .marca-no{color:var(--tinta-suave);font-weight:700;}
+
+  #oferta{background:var(--crema-2);}
+  .oferta-caja{background:var(--blanco);border:2px solid var(--terracota);border-radius:12px;padding:34px;max-width:760px;}
+  .oferta-caja .precio{font-size:3rem;}
+  .trato{margin-top:22px;padding-top:22px;border-top:1px solid var(--linea);font-size:.97rem;color:var(--tinta-suave);}
+
+  .form-hueco{
+    border:2px dashed var(--linea);border-radius:10px;padding:56px 28px;
+    text-align:center;background:var(--blanco);color:var(--tinta-suave);
+  }
+  .form-hueco code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;background:var(--crema-2);padding:2px 6px;border-radius:4px;}
+
+  details{border-bottom:1px solid var(--linea);padding:18px 0;}
+  details summary{
+    font-family:var(--display);font-weight:600;font-size:1.08rem;
+    cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  }
+  details summary::-webkit-details-marker{display:none;}
+  details summary::after{content:"+";color:var(--terracota);font-size:1.4rem;line-height:1;flex-shrink:0;}
+  details[open] summary::after{content:"–";}
+  details p{margin-top:12px;font-size:.97rem;color:var(--tinta-suave);max-width:640px;}
+
+  #final{text-align:center;background:var(--tinta);color:var(--crema);border-bottom:none;}
+  #final h2{color:var(--crema);}
+  #final p{color:#C9B9AE;max-width:520px;margin:16px auto 0;}
+  #final .acciones{justify-content:center;}
+  #final .btn-linea{color:var(--crema);border-color:var(--crema);background:transparent;}
+  #final .btn-linea:hover{background:rgba(255,255,255,.1);color:var(--crema);border-color:var(--crema);}
+
+  footer{padding:34px 0;font-size:.88rem;color:var(--tinta-suave);}
+  .footer-in{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;}
+
+  @media (max-width:760px){
+    body{font-size:16px;}
+    section{padding:56px 0;}
+    .entrega{grid-template-columns:1fr;gap:30px;}
+    .veredicto{border-right:none;border-bottom:1px solid var(--linea);}
+    .veredicto:last-child{border-bottom:none;}
+    .barra-in{padding:12px 18px;}
+    .barra .btn{display:none;}
+    .env{padding:0 18px;}
+    .oferta-caja{padding:24px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <div class="barra-in">
+    <a class="logo" href="#hero">Valida<em>YA</em></a>
+    <a class="btn btn-chico" href="#aplicar">Quiero aplicar al Programa Fundadores</a>
+  </div>
+</header>
+
+<main>
+
+<section id="hero">
+  <div class="env">
+    <div class="cintillo">
+      <span class="punto" aria-hidden="true"></span>
+      Programa Fundadores · 10 cupos · Cochabamba
+    </div>
+    <h1>Averigua si tu idea tiene demanda real <span class="marcado">antes</span> de poner más plata.</h1>
+    <p class="bajada">Hacemos hasta 10 entrevistas con clientes potenciales que vos no conoces, y en 10 días te entregamos evidencia para decidir si avanzar, pivotar o detener tu idea.</p>
+    <div class="precio-fila">
+      <span class="precio">Bs 900</span>
+      <span class="precio-tachado">Bs 1.800</span>
+      <span class="precio-nota">precio Fundadores · pago único</span>
+    </div>
+    <div class="acciones">
+      <a class="btn" href="#aplicar">Quiero aplicar al Programa Fundadores</a>
+      <a class="btn btn-linea" href="#como">Ver cómo funciona</a>
+    </div>
+    <p class="micro">Los cupos se agendan por orden de reserva a partir del 17 de agosto de 2026. Para ideas en etapa temprana con clientes potenciales alcanzables en Cochabamba.</p>
+  </div>
+</section>
+
+<section id="veredicto">
+  <div class="env">
+    <div class="cabecera-sec">
+      <span class="rotulo">Lo que te llevás</span>
+      <h2>Un sprint termina siempre en uno de tres veredictos.</h2>
+    </div>
+    <div class="veredictos">
+      <div class="veredicto v-avanzar">
+        <div class="verbo">Avanzá</div>
+        <p>Hay señales reales de demanda. Sabes a quién le vendes, qué le importa y qué objeción tienes que resolver primero.</p>
+      </div>
+      <div class="veredicto v-pivotar">
+        <div class="verbo">Pivoteá</div>
+        <p>El problema existe, pero no como lo imaginabas. Descubres qué parte de tu idea sostener y qué parte cambiar.</p>
+      </div>
+      <div class="veredicto v-detener">
+        <div class="verbo">Detené</div>
+        <p>La demanda no aparece. Es el resultado más incómodo y, casi siempre, el más rentable: te ahorra la inversión completa.</p>
+      </div>
+    </div>
+    <p class="cierre-veredicto"><strong>Los tres resultados son un éxito del sprint.</strong> No te vendemos un informe que diga que tu idea es buena. Te vendemos saberlo mientras todavía puedes cambiar de decisión.</p>
+  </div>
+</section>
+
+<section id="problema">
+  <div class="env">
+    <div class="cabecera-sec">
+      <span class="rotulo">Por qué existe esto</span>
+      <h2>Entrevistamos a emprendedores en Cochabamba. Ninguno tenía una forma confiable de validar.</h2>
+      <p>No es que no quieran validar. Es que las opciones disponibles hoy son caras, lentas o sesgadas.</p>
+    </div>
+    <div class="hallazgos">
+      <div class="hallazgo">
+        <h3>Se valida preguntándole a la gente que te quiere</h3>
+        <p>La fuente más usada para decidir fue el círculo cercano: familia, pareja, amigos. Es gratis, es rápido y casi nunca te dice que no. Un familiar entusiasmado no es una señal de demanda.</p>
+      </div>
+      <div class="hallazgo">
+        <h3>Los rubros se saturan más rápido de lo que se validan</h3>
+        <p>Varios describieron su mercado con la misma palabra: copiado. Mirar dos o tres negocios parecidos te dice que el negocio existe, no si queda demanda para el tuyo.</p>
+        <span class="cita">“Está saturado.”</span>
+      </div>
+      <div class="hallazgo">
+        <h3>Contratar un estudio quedaba fuera de presupuesto</h3>
+        <p>Quienes lo consideraron lo descartaron por costo, y además dudaban del retorno. Donde sí hubo plata disponible, se fue a cursos y diplomados: capacitación, no comprobar si alguien compraría.</p>
+      </div>
+    </div>
+   <!--<p class="nota-fuente">Fuente: investigación cualitativa propia con 10 emprendedores de Cochabamba (2026). Los testimonios se citan de forma anónima, sin nombres ni marcas.</p>/-->
+  </div>
+</section>
+
+<section id="incluye">
+  <div class="env">
+    <div class="cabecera-sec">
+      <span class="rotulo">Qué incluye el sprint</span>
+      <h2>Diez días, hasta diez entrevistas, una decisión.</h2>
+    </div>
+    <div class="entrega">
+      <div>
+        <div class="caja">
+          <ul class="lista-limpia">
+            <li><strong>Hasta 10 entrevistas semiestructuradas</strong> con potenciales clientes de tu perfil objetivo, en Cochabamba.</li>
+            <li><strong>Reclutamiento a cargo nuestro.</strong> No tenés que conseguir ni agendar a nadie.</li>
+            <li><strong>Reporte ejecutivo de 10 a 15 páginas</strong> con evidencia textual y una recomendación.</li>
+            <li><strong>Sesión de devolución de 60 minutos</strong> por videollamada, incluida en el Programa Fundadores.</li>
+            <li><strong>Actualización al día 5</strong> con el avance y los primeros patrones.</li>
+            <li><strong>Acuerdo de confidencialidad</strong> y nivel de visibilidad elegido por vos.</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h3 style="margin-bottom:14px;">El reporte, sección por sección</h3>
+        <ol class="indice">
+          <li>Resumen ejecutivo</li>
+          <li>Problema evaluado</li>
+          <li>Perfil de los entrevistados</li>
+          <li>Hallazgos</li>
+          <li>Evidencia textual</li>
+          <li>Evaluación de demanda</li>
+          <li>Recomendación</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="como">
+  <div class="env">
+    <div class="cabecera-sec">
+      <span class="rotulo">Cómo funciona</span>
+      <h2>Cinco pasos. Tú participas en dos.</h2>
+    </div>
+    <ol class="pasos">
+      <li class="paso">
+        <div class="paso-num">1</div>
+        <div class="paso-cuerpo">
+          <h3>Aplicas al sprint</h3>
+          <p>Un formulario de 5 minutos: qué idea quieres validar, quién crees que es tu cliente, qué problema resuelve, en qué etapa estás y por qué quieres validar ahora. Revisamos si tu idea es apta y te respondemos.</p>
+          <span class="quien q-vos">Lo haces tú · 7 min</span>
+        </div>
+      </li>
+      <li class="paso">
+        <div class="paso-num">2</div>
+        <div class="paso-cuerpo">
+          <h3>Sesión de diagnóstico</h3>
+          <p>Una videollamada de 45 a 60 minutos. Acá no validamos la idea: definimos <em>qué</em> vamos a poner a prueba. Salimos con el problema principal, el cliente objetivo, las suposiciones críticas, las preguntas de investigación y los criterios de éxito, en un documento de una página que aprobás vos.</p>
+          <span class="quien q-nos">Juntos · 45–60 min</span>
+        </div>
+      </li>
+      <li class="paso">
+        <div class="paso-num">3</div>
+        <div class="paso-cuerpo">
+          <h3>Arrancas el sprint</h3>
+          <p>Con el documento de hipótesis aprobado, confirmas el pago por transferencia o QR y nos avisas por WhatsApp. Recibe el cronograma, los términos del Programa Fundadores y el acuerdo de confidencialidad. Los 10 días calendario empiezan a correr desde la confirmación del pago.</p>
+          <span class="quien q-vos">Lo haces tú</span>
+        </div>
+      </li>
+      <li class="paso">
+        <div class="paso-num">4</div>
+        <div class="paso-cuerpo">
+          <h3>Investigamos</h3>
+          <p>Reclutamos a los participantes, hacemos las entrevistas, analizamos patrones, contrastamos las hipótesis y organizamos la evidencia. Vos no gestionás entrevistas: solo respondes consultas puntuales si aparece alguna duda sobre tu negocio.</p>
+          <span class="quien q-nos">Lo hacemos nosotros · 10 días</span>
+        </div>
+      </li>
+      <li class="paso">
+        <div class="paso-num">5</div>
+        <div class="paso-cuerpo">
+          <h3>Entrega y devolución</h3>
+          <p>Recibes el reporte ejecutivo y nos sentamos 60 minutos por videollamada a revisar los hallazgos, la evaluación de demanda y la recomendación: avanzar, pivotar o detener.</p>
+          <span class="quien q-nos">Juntos · 60 min</span>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="garantia">
+  <div class="env">
+    <div class="cabecera-sec">
+      <span class="rotulo">Nuestro compromiso</span>
+      <h2>Dos garantías, medibles con números.</h2>
+      <p>No prometemos que te vaya a gustar el resultado. Prometemos ejecutar lo que acordamos, y eso se puede contar.</p>
+    </div>
+    <div class="garantias">
+      <div class="garantia">
+        <h3>Reembolso del 100%</h3>
+        <p>Si no ejecutamos las actividades comprometidas en el documento de hipótesis que aprobaste, te devolvemos el total de tu inversión.</p>
+      </div>
+      <div class="garantia">
+        <h3>Repetición sin costo</h3>
+        <p>Si no logramos completar al menos 8 de las 10 entrevistas con personas de tu perfil objetivo, repetimos el sprint sin que pagues de nuevo.</p>
+      </div>
+    </div>
+
+    <h3 style="margin:44px 0 6px;">Vos decidís cuánto se cuenta de tu caso</h3>
+    <p class="plomo" style="font-size:.97rem;max-width:640px;">El precio Fundadores existe porque tu sprint nos ayuda a construir nuestros primeros casos de aprendizaje. Elegís el nivel de visibilidad en la sesión de diagnóstico, antes de pagar.</p>
+    <div class="visibilidad">
+      <div class="vis">
+        <h3>Público</h3>
+        <p>Podemos contar tu caso con nombre y marca, como historia de referencia.</p>
+      </div>
+      <div class="vis">
+        <h3>Anónimo</h3>
+        <p>Compartimos aprendizajes y cifras del caso, sin ningún dato que permita identificarte.</p>
+      </div>
+      <div class="vis">
+        <h3>Confidencial</h3>
+        <p>No publicamos nada identificable ni tu caso como pieza de contenido. Los aprendizajes se usan de forma agregada e interna.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="alternativas">
+  <div class="env">
+    <div class="cabecera-sec">
+      <span class="rotulo">Comparado con lo que ya existe</span>
+      <h2>Tus tres opciones hoy.</h2>
+    </div>
+    <div class="compara">
+      <div class="col">
+        <h3>Preguntarle a tu círculo</h3>
+        <span class="costo">Bs 0 · unos días</span>
+        <ul>
+          <li><span class="marca-no">✕</span> Respuestas condicionadas por el cariño</li>
+          <li><span class="marca-no">✕</span> No son tus clientes reales</li>
+          <li><span class="marca-si">✓</span> Gratis e inmediato</li>
+          <li><span class="marca-no">✕</span> Sin evidencia que puedas revisar después</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Contratar un estudio de mercado</h3>
+        <span class="costo">Miles de bolivianos · semanas o meses</span>
+        <ul>
+          <li><span class="marca-si">✓</span> Metodología formal</li>
+          <li><span class="marca-no">✕</span> Fuera de presupuesto en etapa de ideación</li>
+          <li><span class="marca-no">✕</span> Pensado para decisiones de inversión grandes</li>
+          <li><span class="marca-no">✕</span> Llega tarde para decidir si arrancás</li>
+        </ul>
+      </div>
+      <div class="col destacada">
+        <h3>Sprint de Validación</h3>
+        <span class="costo">Bs 900 en Programa Fundadores · 10 días</span>
+        <ul>
+          <li><span class="marca-si">✓</span> Clientes potenciales que no te conocen</li>
+          <li><span class="marca-si">✓</span> Evidencia textual en un reporte que queda</li>
+          <li><span class="marca-si">✓</span> Reclutamiento y entrevistas a cargo nuestro</li>
+          <li><span class="marca-si">✓</span> Una recomendación concreta, no un diagnóstico abierto</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="oferta">
+  <div class="env">
+    <div class="cabecera-sec">
+      <span class="rotulo">La oferta</span>
+      <h2>Programa Fundadores: 10 emprendimientos.</h2>
+      <p>Es la primera cohorte del Sprint de Validación. El precio es la mitad porque tu caso nos ayuda a documentar cómo funciona esto en Cochabamba.</p>
+    </div>
+    <div class="oferta-caja">
+      <div class="precio-fila">
+        <span class="precio">Bs 900</span>
+        <span class="precio-tachado">Bs 1.800</span>
+        <span class="precio-nota">ahorrás Bs 900 · pago único adelantado</span>
+      </div>
+      <ul class="lista-limpia" style="margin-top:22px;">
+        <li>Sprint de Validación completo, hasta 10 entrevistas en 10 días</li>
+        <li>Reporte ejecutivo de 10 a 15 páginas</li>
+        <li>Sesión de devolución de 60 minutos por videollamada</li>
+        <li>Garantía de ejecución: reembolso del 100%</li>
+        <li>Repetición sin costo si no completamos 8 de 10 entrevistas del perfil</li>
+      </ul>
+      <p class="trato"><strong>Qué te pedimos a cambio:</strong> permiso para documentar los aprendizajes de tu caso, con el nivel de visibilidad que elijas vos —público, anónimo o confidencial— definido antes de que pagues. Cupos por orden de reserva desde el 17 de agosto de 2026.</p>
+    </div>
+  </div>
+</section>
+
+<section id="aplicar">
+  <div class="env angosto">
+    <div class="cabecera-sec">
+      <span class="rotulo">Paso 1</span>
+      <h2>Aplica al sprint.</h2>
+      <p>Siete minutos. Revisamos si tu idea es apta y te escribimos para agendar la sesión de diagnóstico. Todavía no pagás nada.</p>
+    </div>
+
+    <!-- ================= REEMPLAZAR ESTE BLOQUE POR EL EMBED DEL FORMULARIO ================= -->
+    <div class="form-hueco">
+      
+      <p style="margin-top:8px;font-size:.92rem;"><code><iframe data-tally-src="https://tally.so/embed/PdLJ4d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="2936" frameborder="0" marginheight="0" marginwidth="0" title="Formulario Programa Fundadores"></iframe>
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script></code>
+    </div>
+    <!-- ====================================================================================== -->
+
+    <p class="micro">¿Preferís preguntar antes? Escribinos por <a href="https://wa.me/59176948270">WhatsApp al +591 76948270</a> o a <a href="mailto:validaya@gmail.com">validaya@gmail.com</a>.</p>
+  </div>
+</section>
+
+<section id="preguntas">
+  <div class="env angosto">
+    <div class="cabecera-sec">
+      <span class="rotulo">Preguntas frecuentes</span>
+      <h2>Antes de aplicar.</h2>
+    </div>
+
+    <details>
+      <summary>¿Qué pasa si el resultado es que mi idea no funciona?</summary>
+      <p>Ese es un resultado válido y probablemente el más valioso: te ahorrás la inversión que ibas a hacer. El reporte no te deja solo con un “no”; te muestra dónde se rompió la demanda, qué objeciones aparecieron y si hay una versión distinta de la idea que sí tenga tracción.</p>
+    </details>
+
+    <details>
+      <summary>¿Esto reemplaza un estudio de mercado formal?</summary>
+      <p>No, y no intenta hacerlo. Un estudio de mercado sirve para decisiones de inversión grandes con datos estadísticamente representativos. El sprint es investigación cualitativa para una decisión distinta y anterior: si vale la pena seguir adelante con esta idea. Diez entrevistas no son una muestra representativa; son evidencia suficiente para detectar patrones y frenar errores caros.</p>
+    </details>
+
+    <details>
+      <summary>¿Cuándo empiezan a contar los 10 días?</summary>
+      <p>Desde la confirmación del pago, una vez que aprobaste el documento de hipótesis en la sesión de diagnóstico. Así el plazo no corre mientras se define el alcance.</p>
+    </details>
+
+    <details>
+      <summary>¿Quién consigue a las personas entrevistadas?</summary>
+      <p>Nosotros. Reclutamos participantes que coincidan con el perfil objetivo que definimos juntos, y que no formen parte de tu círculo cercano. Es la diferencia central entre esto y preguntarle a tus conocidos.</p>
+    </details>
+
+    <details>
+      <summary>¿Mi idea todavía no tiene nombre ni producto. Aplico igual?</summary>
+      <p>Sí. El sprint está pensado justamente para la etapa temprana, cuando todavía podés cambiar de rumbo sin perder plata. Lo que necesitamos es que puedas describir el problema que querés resolver y a quién crees que le pasa.</p>
+    </details>
+
+    <details>
+      <summary>¿Funciona si mis clientes no están en Cochabamba?</summary>
+      <p>Por ahora, no. Esta primera cohorte trabaja solo con entrevistas en Cochabamba, así que necesitamos que tus clientes potenciales sean alcanzables acá. Si tu mercado está en otra ciudad, escribinos y te avisamos cuando abramos.</p>
+    </details>
+
+    <details>
+      <summary>¿Cómo se paga?</summary>
+      <p>Pago único adelantado por transferencia bancaria o QR. Te enviamos los datos después de la sesión de diagnóstico y confirmás el comprobante por WhatsApp. El cupo queda reservado con el pago confirmado.</p>
+    </details>
+
+    <details>
+      <summary>¿Puedo escuchar las entrevistas?</summary>
+      <p>El entregable es el reporte ejecutivo, que incluye evidencia textual de lo que dijeron los participantes. El acceso a material adicional depende de lo que hayan autorizado los entrevistados, y lo conversamos en la sesión de diagnóstico.</p>
+    </details>
+  </div>
+</section>
+
+<section id="final" class="sin-linea">
+  <div class="env">
+    <h2>Quedan 10 cupos en el Programa Fundadores.</h2>
+    <p>Se agendan por orden de reserva a partir del 17 de agosto. Aplicar toma 5 minutos y no compromete a nada.</p>
+    <div class="acciones">
+      <a class="btn" href="#aplicar">Quiero aplicar al Programa Fundadores</a>
+      <a class="btn btn-linea" href="https://wa.me/59176948270">Escribir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="env footer-in">
+    <span>ValidaYA — 2026 · Cochabamba, Bolivia</span>
+    <span><a href="https://wa.me/59176948270">+591 76948270</a> · <a href="mailto:validaya@gmail.com">validaya@gmail.com</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
